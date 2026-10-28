@@ -47,8 +47,9 @@ app = FastAPI(
 )
 
 # Configure Cross-Origin Resource Sharing (CORS)
-# Restricts access specifically to the local Vite frontend development origins
+# Allows production frontend and local Vite development origins
 allowed_origins = [
+    "https://sustainable-agriculture-monitoring.vercel.app",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
@@ -56,9 +57,9 @@ allowed_origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
-    allow_credentials=True,
-    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allows all HTTP headers
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
